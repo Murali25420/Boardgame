@@ -24,7 +24,7 @@ jobs:
     - name: Build with Maven
       run: mvn clean package
 
-  sonarqube:
+    sonarqube:
     name: SonarQube Analysis
     runs-on: self-hosted
     needs: build
@@ -38,6 +38,9 @@ jobs:
       with:
         distribution: 'temurin'
         java-version: '17'
+
+    - name: Build with Maven
+      run: mvn clean compile
 
     - name: Run SonarQube Scanner
       env:
